@@ -1,0 +1,1 @@
+// This file can be deleted as we've moved the PDF generation logic directly into the InvoiceForm component
