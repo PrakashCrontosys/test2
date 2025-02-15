@@ -37,11 +37,11 @@ function App() {
   const [currentImage, setCurrentImage] = useState(0);
   const [showConfetti, setShowConfetti] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 3000);
 
     const confettiTimer = setTimeout(() => {
       setShowConfetti(false);
@@ -77,22 +77,28 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-orange-50">
       {showConfetti && <Confetti />}
       
       {/* Navigation */}
-      <nav className="bg-white shadow-md fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4">
+      <nav className="bg-orange-500 shadow-md fixed w-full z-50">
+        <div className="max-w-7xl mx-auto px-2">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-bold text-purple-600">Bhuvneshwar Mahadev Decorators</h1>
-            
-            <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-600 hover:text-purple-600">Home</a>
-              <a href="#services" className="text-gray-600 hover:text-purple-600">Services</a>
-              <a href="#contact" className="text-gray-600 hover:text-purple-600">Contact</a>
-              <a href="#about" className="text-gray-600 hover:text-purple-600">About</a>
+            {/* Left section with logo and h1 */}
+            <div className="flex items-center space-x-3">
+              <img src="/assets/logo.png" alt="Left Logo" className="w-16 h-16" />
+              <h1 className="text-xl font-bold text-black-600">Bhuvneshwar Mahadev Decorators</h1>
             </div>
-
+  
+            {/* Right section for menu */}
+            <div className="hidden md:flex space-x-10">
+              <a href="#home" className="text-gray-800 hover:text-purple-900 h1">Home</a>
+              <a href="#services" className="text-gray-800 hover:text-purple-900 h1">Services</a>
+              <a href="#contact" className="text-gray-800 hover:text-purple-900 h1">Contact</a>
+              <a href="#about" className="text-gray-800 hover:text-purple-900 h1">About</a>
+            </div>
+  
+            {/* Mobile Menu Button */}
             <button
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -101,7 +107,7 @@ function App() {
             </button>
           </div>
         </div>
-
+  
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
@@ -112,16 +118,16 @@ function App() {
               className="md:hidden bg-white"
             >
               <div className="px-4 pt-2 pb-3 space-y-1">
-                <a href="#home" className="block px-3 py-2 text-gray-600 hover:text-purple-600">Home</a>
-                <a href="#services" className="block px-3 py-2 text-gray-600 hover:text-purple-600">Services</a>
-                <a href="#contact" className="block px-3 py-2 text-gray-600 hover:text-purple-600">Contact</a>
-                <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-purple-600">About</a>
+                <a href="#home" className="block px-3 py-2 text-gray-600 hover:text-purple-800">Home</a>
+                <a href="#services" className="block px-3 py-2 text-gray-600 hover:text-purple-800">Services</a>
+                <a href="#contact" className="block px-3 py-2 text-gray-600 hover:text-purple-800">Contact</a>
+                <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-purple-800">About</a>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
-
+  
       {/* Hero Section with Image Scroller */}
       <div className="relative h-screen">
         <AnimatePresence mode='wait'>
@@ -134,6 +140,7 @@ function App() {
             transition={{ duration: 0.5 }}
             className="w-full h-full object-cover"
             alt="Decoration showcase"
+            defaultValue={images[currentImage]}
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -143,7 +150,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-bold mb-4"
             >
-              Creating Magical Moments
+              "તમારા પ્રસંગ માટે કલ્પનાવટ કલાનું સરખું બંધન!"
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -156,7 +163,7 @@ function App() {
           </div>
         </div>
       </div>
-
+  
       {/* Services Section */}
       <section id="services" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -168,7 +175,7 @@ function App() {
           </div>
         </div>
       </section>
-
+  
       {/* Contact Section */}
       <section id="contact" className="relative py-20">
         <div className="absolute inset-0">
@@ -190,7 +197,7 @@ function App() {
           </button>
         </div>
       </section>
-
+  
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
@@ -204,9 +211,11 @@ function App() {
             <div>
               <h3 className="text-xl font-semibold mb-4">Contact</h3>
               <p className="text-gray-400">
-                123 Decoration Street<br />
-                Mumbai, Maharashtra 400001<br />
-                Phone: +91 98765 43210
+                6,7, Devarshi Complex<br />
+                opposite Swikar Tenements,<br />
+                Near tulip bunglows,<br />
+                Thaltej, Ahmedabad, Gujarat 380054<br />
+                Phone: +91 9825235549
               </p>
             </div>
             <div>
@@ -231,6 +240,7 @@ function App() {
       </footer>
     </div>
   );
+  
 }
 
 export default App;
